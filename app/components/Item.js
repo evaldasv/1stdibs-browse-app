@@ -22,7 +22,7 @@ const Item = React.createClass({
                 </a>
                 <div className={BrowseStyles.item_price_label}>
                     {price}
-                    <FavIcon />
+                    <FavIcon item={this.props.data.id}/>
                 </div>
             </div>
         )

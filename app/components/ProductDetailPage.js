@@ -116,6 +116,9 @@ const ProductDetailPage = React.createClass({
 
     render() {
         let item = this.state.item;
+        
+        if (! Object.keys(item).length) return null;
+
         let headerTitle = item.seller && item.seller.company;
         return (
             <div>
