@@ -7,6 +7,8 @@ ReactDOM.render((
 	<BrowsePage />
 ), document.getElementById('root'));
 
+// not sure how routing should work with separate views / entry files 
+
 // ReactDOM.render((
 // 	<Router history={browserHistory}>
 // 	  <Route
