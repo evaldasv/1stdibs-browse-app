@@ -5,11 +5,11 @@ function get(url, callback) {
         .get(url)
         .set('Content-Type', 'application/json; charset=utf-8')
         .end(function (err, res) {
-        	if (err) {
-        		callback(err);
-        	} else if (res) {
-        		callback(res.body);
-        	}
+            if (err) {
+                callback(err);
+            } else if (res) {
+                callback(res.body);
+            }
         });
 }
 

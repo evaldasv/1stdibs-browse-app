@@ -2,25 +2,25 @@
 @import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
 
 header {
-	text-align: center;
+    text-align: center;
     padding: 15px;
     background: #fff;
-	border-bottom: 1px solid #ccc;
-	font-size: 24px;
-	font-weight: bold;
-	color: #000;
+    border-bottom: 1px solid #ccc;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
 }
 
 body {
-	background: #f0efef;
-	margin: 0;
-	padding: 0;
-	font-family: 'Open Sans', sans-serif;
-  	color: #666;
+    background: #f0efef;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: #666;
 }
 
 *, *:after, *:before {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }

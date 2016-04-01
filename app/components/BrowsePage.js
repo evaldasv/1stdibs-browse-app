@@ -17,11 +17,11 @@ const BrowsePage = React.createClass({
     },
 
     getStateFromStores() {
-    	return {
-    		items: AppStore.getItems(),
-    		threshold: PRODUCT_THRESHOLD
-    	}
-	},
+        return {
+            items: AppStore.getItems(),
+            threshold: PRODUCT_THRESHOLD
+        }
+    },
 
     componentWillMount() {
         AppActions.getItems();
@@ -40,30 +40,30 @@ const BrowsePage = React.createClass({
     },
 
     handleLoadMore() {
-    	let threshold = this.state.threshold + PRODUCT_THRESHOLD;
-    	let total = this.getTotalItems();
-    	let itemsToLoad = (threshold > total)
-    		? total
-    		: threshold
-    	;
-    	
-    	this.setState({threshold: itemsToLoad });
+        let threshold = this.state.threshold + PRODUCT_THRESHOLD;
+        let total = this.getTotalItems();
+        let itemsToLoad = (threshold > total)
+            ? total
+            : threshold
+        ;
+        
+        this.setState({threshold: itemsToLoad });
     },
 
     getTotalItems() {
-    	return this.state.items.length;
+        return this.state.items.length;
     },
 
     renderSingleItem(item, index) {
-    	while(index < this.state.threshold) {
-	        return (
-	            <Item
-		            key={item.integerId}
-		            id={item.integerId}
-		            data={item}
-	            />
-	        );
-	    }
+        while(index < this.state.threshold) {
+            return (
+                <Item
+                    key={item.integerId}
+                    id={item.integerId}
+                    data={item}
+                />
+            );
+        }
     },
 
     renderItems() {
@@ -77,17 +77,17 @@ const BrowsePage = React.createClass({
     },
 
     render() {
-    	let disableButton = this.state.threshold === this.getTotalItems();
-    	let klass = disableButton ? browseStyles.disabled : null; 
+        let disableButton = this.state.threshold === this.getTotalItems();
+        let klass = disableButton ? browseStyles.disabled : null; 
         return (
-        	<div>
-        		<Header title="Browse page" />
-	            <div className={browseStyles.wrapper}>
-	                {this.renderItems()}
-	            </div>
-	            <div className={browseStyles.button_container}>
-	            	<button className={klass} onClick={this.handleLoadMore}>Load More</button>
-	            </div>
+            <div>
+                <Header title="Browse page" />
+                <div className={browseStyles.wrapper}>
+                    {this.renderItems()}
+                </div>
+                <div className={browseStyles.button_container}>
+                    <button className={klass} onClick={this.handleLoadMore}>Load More</button>
+                </div>
             </div>
         );
     }
