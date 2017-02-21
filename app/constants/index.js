@@ -1,6 +1,6 @@
-const keyMirror = require('keymirror');
+import keyMirror from 'keymirror';
 
-module.exports = keyMirror({
+const constants = keyMirror({
     ITEMS_REQUEST: null,
     SINGLE_ITEM_REQUEST: null,
     ITEMS_RESPONSE: null,
@@ -8,4 +8,6 @@ module.exports = keyMirror({
     CHANGE_EVENT: null,
     VIEW_ACTION: null,
     SERVER_ACTION: null
-});
+})
+
+export default constants

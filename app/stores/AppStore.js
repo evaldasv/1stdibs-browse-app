@@ -23,7 +23,7 @@ const AppStore = assign({}, EventEmitter.prototype, {
     }
 });
 
-AppDispatcher.register(function(payload) {
+AppDispatcher.register((payload) => {
     const action = payload.action;
     const type = action.type;
     const data = action.data;
