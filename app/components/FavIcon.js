@@ -2,64 +2,68 @@ import React from 'react'
 import favStyle from '../styles/favicon'
 import classnames from 'classnames'
 
-const FavIcon = React.createClass({
+class FavIcon extends React.Component {
 
-    propTypes: {
-        item: React.PropTypes.string.isRequired
-    },
-
-    getInitialState() {
-        return {
-            active: false
+    constructor(props) {
+        super(props)
+        this.state = {
+            active: this.checkFavoriteStatus()
         }
-    },
 
-    componentDidMount() {
-        this.setState({active: this.checkCurrentStatus()});
-    },
+        this.handleClick = this.handleClick.bind(this)
+    }
 
-    checkCurrentStatus() {
-        let favorites = this.getFavorites();
-        let self = this;
-        let status = favorites.some(function(favorite) {
-            return favorite === self.props.item;
-        });
-        return status;
-    },
+    checkFavoriteStatus() {
+        return this.getFavorites()
+            .some((fav) => 
+                fav === this.props.id
+            )
+    }
 
     getFavorites() {
-        return JSON.parse(localStorage.getItem('favorite_items')) || [];
-    },
+        return JSON.parse(localStorage.getItem('favorite_items')) || []
+    }
 
     handleFavorites() {
-        let favorites = this.getFavorites();
-        let index = favorites.indexOf(this.props.item);
-        if ( index === -1 ) {
-            favorites.push(this.props.item);
+        const favorites = this.getFavorites()
+        const index = favorites.indexOf(this.props.id)
+
+        console.log(favorites, this.props);
+
+        if (index === -1) {
+            favorites.push(this.props.id)
         } else {
-            favorites.splice(index, 1);
+            favorites.splice(index, 1)
         }
-        localStorage.setItem('favorite_items', JSON.stringify(favorites));
-    },
+
+        localStorage.setItem('favorite_items', JSON.stringify(favorites))
+    }
 
     handleClick() {
-        this.handleFavorites();
+        this.handleFavorites()
         this.setState({
-            active: !this.state.active
+            active: ! this.state.active
         })
-    },
+    }
 
     render() {
-        const activeKlass = this.state.active ? favStyle.fav_icon_active : null;
-        const klass = classnames(['fa fa-heart-o fa-lg', favStyle.fav_icon, activeKlass, this.props.className]);
+        const activeKlass = this.state.active ? favStyle.fav_icon_active : null
+        const classes = classnames( ['fa fa-heart-o fa-lg',
+                                favStyle.fav_icon,
+                                activeKlass,
+                                this.props.className] )
         return (
             <i 
                 ref="favIcon"
-                className={klass}
+                className={classes}
                 onClick={this.handleClick}>
             </i>
-        );
+        )
     }
-});
+}
+
+FavIcon.propTypes = {
+    id: React.PropTypes.string.isRequired
+}
 
 export default FavIcon

@@ -8,77 +8,77 @@ import Header from '../components/Header'
 import browseStyles from '../styles/browse.css'
 import baseStyles from '../styles/base.css'
 
-const PRODUCT_THRESHOLD = 5;
+const PRODUCT_THRESHOLD = 5
 
-const BrowsePage = React.createClass({
+const getStateFromStores = () => {
+    return {
+        items: AppStore.getItems(),
+        threshold: PRODUCT_THRESHOLD
+    }
+}
 
-    getInitialState() {
-        return this.getStateFromStores();
-    },
+class BrowsePage extends React.Component {
 
-    getStateFromStores() {
-        return {
-            items: AppStore.getItems(),
-            threshold: PRODUCT_THRESHOLD
-        }
-    },
-
-    componentWillMount() {
-        AppActions.getItems();
-    },
+    constructor() {
+        super()
+        this.state = getStateFromStores()
+        this.change = this.change.bind(this)
+        this.handleLoadMore = this.handleLoadMore.bind(this)
+    }
 
     componentDidMount() {
-        AppStore.addChangeListener(this.change);
-    },
+        AppActions.getItems()
+        AppStore.addChangeListener(this.change)
+    }
 
     componentWillUnmount() {
-        AppStore.removeChangeListener(this.change);
-    },
+        AppStore.removeChangeListener(this.change)
+    }
 
     change() {
-        this.setState(this.getStateFromStores());
-    },
+        this.setState(getStateFromStores())
+    }
 
     handleLoadMore() {
-        let threshold = this.state.threshold + PRODUCT_THRESHOLD;
-        let total = this.getTotalItems();
-        let itemsToLoad = (threshold > total)
+        const threshold = this.state.threshold + PRODUCT_THRESHOLD
+        const total = this.getItemCount()
+        const itemsToLoad = (threshold > total)
             ? total
             : threshold
-        ;
         
-        this.setState({threshold: itemsToLoad });
-    },
+        this.setState({threshold: itemsToLoad })
+    }
 
-    getTotalItems() {
-        return this.state.items.length;
-    },
+    getItemCount() {
+        return this.state.items.length
+    }
 
     renderSingleItem(item, index) {
-        while(index < this.state.threshold) {
+        if (index < this.state.threshold) {
             return (
                 <Item
                     key={item.integerId}
-                    id={item.integerId}
-                    data={item}
+                    item={item}
                 />
-            );
+            )
         }
-    },
+    }
 
     renderItems() {
-        let singleItems = [];
-        let items = this.state.items;
+        const items = this.state.items
 
-        if (items && this.getTotalItems()) {
-            singleItems = items.map(this.renderSingleItem);
+        if (items && this.getItemCount()) {
+            return items.map(this.renderSingleItem, this)
         }
-        return singleItems;
-    },
+
+        return []
+    }
 
     render() {
-        let disableButton = this.state.threshold === this.getTotalItems();
-        let klass = disableButton ? browseStyles.disabled : null; 
+        const buttonClass = this.state.threshold === this.getItemCount() 
+            ? browseStyles.disabled
+            : null
+
         return (
             <div>
                 <Header title="Browse page" />
@@ -86,12 +86,12 @@ const BrowsePage = React.createClass({
                     {this.renderItems()}
                 </div>
                 <div className={browseStyles.button_container}>
-                    <button className={klass} onClick={this.handleLoadMore}>Load More</button>
+                    <button className={buttonClass} onClick={this.handleLoadMore}>Load More</button>
                 </div>
             </div>
-        );
+        )
     }
 
-});
+}
 
 export default BrowsePage

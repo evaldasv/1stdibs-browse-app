@@ -1,18 +1,19 @@
 import React from 'react'
 
-const Header = React.createClass({
+class Header extends React.Component {
     renderHomeButton() {
         return (
             <div className={this.props.className} onClick={this.props.onClick}>
-            <div className={this.props.arrowButtonClass}>&lt;</div>
-            <span>Home</span>
+                <div className={this.props.arrowButtonClass}>&lt;</div>
+                <span>Home</span>
             </div>
         )
-    },
+    }
+
     render() {
-        let homeButton = this.props.type === 'pdp' 
+        const homeButton = this.props.type === 'pdp' 
             ? this.renderHomeButton()
-            : null;
+            : null
 
         return (
             <header>
@@ -21,6 +22,6 @@ const Header = React.createClass({
             </header>
         )
     }
-})
+}
 
 export default Header

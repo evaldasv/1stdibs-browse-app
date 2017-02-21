@@ -2,31 +2,31 @@ import React from 'react'
 import BrowseStyles from '../styles/browse.css'
 import FavIcon from '../components/FavIcon'
 
-const Item = React.createClass({
-
-    propTypes: {
-        id: React.PropTypes.string.isRequired,
-        data: React.PropTypes.object.isRequired,
-    },
+class Item extends React.Component {
 
     render() {
-        let price = this.props.data &&
-                    this.props.data.price &&
-                    this.props.data.price.amounts.USD ||
-                    'Price Upon Request'
-        ;
+        const item = this.props.item
+        const price = item &&
+            item.price &&
+            item.price.amounts.USD ||
+            'Price Upon Request'
+
         return (
             <div className={BrowseStyles.item}>
-                <a href={'/pdp/' + this.props.id}>
-                    <img src={this.props.data.image} />
+                <a href={'/pdp/' + item.id}>
+                    <img src={item.image} />
                 </a>
                 <div className={BrowseStyles.item_price_label}>
                     {price}
-                    <FavIcon item={this.props.data.id}/>
+                    <FavIcon id={item.id}/>
                 </div>
             </div>
         )
     }
-})
+}
+
+Item.propTypes = {
+    item: React.PropTypes.object.isRequired
+}
 
 export default Item
