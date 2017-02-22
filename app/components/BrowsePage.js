@@ -8,7 +8,7 @@ import Header from '../components/Header'
 import browseStyle from './browse.css'
 import baseStyle from './base.css'
 
-const PRODUCT_THRESHOLD = 5
+const PRODUCT_THRESHOLD = 6
 
 const getStateFromStores = () => {
     return {
@@ -72,7 +72,7 @@ class BrowsePage extends React.Component {
         return (
             <div>
                 <Header title="Browse page" />
-                <div className={browseStyle.wrapper}>
+                <div className={browseStyle.container}>
                     {this.state.items.map(this.renderSingleItem, this)}
                 </div>
                 <div className={browseStyle.button_container}>

@@ -44,7 +44,7 @@ class ProductDetails extends React.Component {
     render() {
         const item = this.props.item;
         return (
-            <div className={style.product_info}>
+            <div className={style.details_container}>
                 <div className={style.details_block_top}>
                     <div className={style.details_block_info}>
                         <div className={classnames([style.title, style.bold_label])}>

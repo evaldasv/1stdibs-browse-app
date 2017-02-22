@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher/AppDispatcher'
 import AppConstants from '../constants'
-import APIService from '../service/api'
+import APIService from '../services/api'
 
 const AppActions = {
     getItems() {

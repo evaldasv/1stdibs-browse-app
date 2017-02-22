@@ -48,6 +48,11 @@ class ProductPage extends React.Component {
 
     render() {
         const item = this.state.item
+
+        if (! Object.keys(item).length) {
+            return null
+        }
+
         const headerTitle = item.seller && item.seller.company
 
         return (
@@ -58,12 +63,14 @@ class ProductPage extends React.Component {
                         <span>Home</span>
                     </div>
                 </Header>
-                <div className={style.wrapper}>
-                    <div className={style.image_container}>
-                        <img src={item.image} />
-                        <FavIcon id={item.id} className={style.fav_icon} />
+                <div className={style.container}>
+                    <div className={style.details}>
+                        <div className={style.image_container}>
+                            <img src={item.image} />
+                            <FavIcon id={item.id} className={style.fav_icon} />
+                        </div>
+                        <ProductDetails item={item} />
                     </div>
-                    <ProductDetails item={item} />
                 </div>
             </div>
         )

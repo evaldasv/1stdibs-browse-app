@@ -2,43 +2,21 @@ import React from 'react'
 import style from './style.css'
 import classnames from 'classnames'
 
+import FavoriteService from '../../services/favoriteService'
+
 class FavIcon extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            active: this.checkFavoriteStatus()
+            active: FavoriteService.getStatus(props.id)
         }
-
         this.handleClick = this.handleClick.bind(this)
     }
 
-    checkFavoriteStatus() {
-        return this.getFavorites()
-            .some((fav) => 
-                fav === this.props.id
-            )
-    }
-
-    getFavorites() {
-        return JSON.parse(localStorage.getItem('favorite_items')) || []
-    }
-
-    handleFavorites() {
-        const favorites = this.getFavorites()
-        const index = favorites.indexOf(this.props.id)
-
-        if (index === -1) {
-            favorites.push(this.props.id)
-        } else {
-            favorites.splice(index, 1)
-        }
-
-        localStorage.setItem('favorite_items', JSON.stringify(favorites))
-    }
 
     handleClick() {
-        this.handleFavorites()
+        FavoriteService.handle(this.props.id)
         this.setState({
             active: ! this.state.active
         })
