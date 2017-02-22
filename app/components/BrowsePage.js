@@ -5,8 +5,8 @@ import classnames from 'classnames'
 import Item from '../components/Item'
 import Header from '../components/Header'
 
-import browseStyles from './browse.css'
-import baseStyles from './base.css'
+import browseStyle from './browse.css'
+import baseStyle from './base.css'
 
 const PRODUCT_THRESHOLD = 5
 
@@ -66,16 +66,16 @@ class BrowsePage extends React.Component {
 
     render() {
         const buttonClass = this.state.threshold === this.getItemCount() 
-            ? browseStyles.disabled
+            ? browseStyle.disabled
             : null
 
         return (
             <div>
                 <Header title="Browse page" />
-                <div className={browseStyles.wrapper}>
+                <div className={browseStyle.wrapper}>
                     {this.state.items.map(this.renderSingleItem, this)}
                 </div>
-                <div className={browseStyles.button_container}>
+                <div className={browseStyle.button_container}>
                     <button className={buttonClass} onClick={this.handleLoadMore}>Load More</button>
                 </div>
             </div>

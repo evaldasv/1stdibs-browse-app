@@ -52,14 +52,12 @@ class ProductPage extends React.Component {
 
         return (
             <div>
-                <Header 
-                    title={headerTitle}
-                    type="pdp"
-                    onClick={this.handleBackButton}
-                    className={style.back_button}
-                    arrowButtonClass={style.arrow_btn} 
-                />
-
+                <Header title={headerTitle}>
+                    <div className={style.back_button} onClick={this.handleBackButton}>
+                        <div className={style.arrow_btn}>&lt;</div>
+                        <span>Home</span>
+                    </div>
+                </Header>
                 <div className={style.wrapper}>
                     <div className={style.image_container}>
                         <img src={item.image} />
@@ -67,7 +65,6 @@ class ProductPage extends React.Component {
                     </div>
                     <ProductDetails item={item} />
                 </div>
-
             </div>
         )
     }
