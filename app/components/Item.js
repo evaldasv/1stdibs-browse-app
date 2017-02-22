@@ -1,6 +1,6 @@
 import React from 'react'
-import BrowseStyles from '../styles/browse.css'
-import FavIcon from '../components/FavIcon'
+import BrowseStyles from './browse.css'
+import FavIcon from './FavIcon'
 
 class Item extends React.Component {
 

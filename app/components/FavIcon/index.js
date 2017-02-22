@@ -1,5 +1,5 @@
 import React from 'react'
-import favStyle from '../styles/favicon'
+import style from './style.css'
 import classnames from 'classnames'
 
 class FavIcon extends React.Component {
@@ -28,8 +28,6 @@ class FavIcon extends React.Component {
         const favorites = this.getFavorites()
         const index = favorites.indexOf(this.props.id)
 
-        console.log(favorites, this.props);
-
         if (index === -1) {
             favorites.push(this.props.id)
         } else {
@@ -47,9 +45,9 @@ class FavIcon extends React.Component {
     }
 
     render() {
-        const activeKlass = this.state.active ? favStyle.fav_icon_active : null
+        const activeKlass = this.state.active ? style.fav_icon_active : null
         const classes = classnames( ['fa fa-heart-o fa-lg',
-                                favStyle.fav_icon,
+                                style.fav_icon,
                                 activeKlass,
                                 this.props.className] )
         return (
@@ -63,7 +61,8 @@ class FavIcon extends React.Component {
 }
 
 FavIcon.propTypes = {
-    id: React.PropTypes.string.isRequired
+    id: React.PropTypes.string.isRequired,
+    className: React.PropTypes.string
 }
 
 export default FavIcon

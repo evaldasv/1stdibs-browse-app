@@ -8,6 +8,7 @@ const ServerActions = {
             data: data
         })
     },
+
     getSingleItem(data) {
         AppDispatcher.handleServerAction({
             type: AppConstants.SINGLE_ITEM_RESPONSE,

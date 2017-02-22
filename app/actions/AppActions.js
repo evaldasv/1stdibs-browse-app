@@ -7,13 +7,14 @@ const AppActions = {
         AppDispatcher.handleViewAction({
             type: AppConstants.ITEMS_REQUEST
         })
-        APIService.getItems();
+        APIService.getItems()
     },
+
     getSingleItem(id) {
         AppDispatcher.handleViewAction({
             type: AppConstants.SINGLE_ITEM_REQUEST
         })
-        APIService.getSingleItem(id);
+        APIService.getSingleItem(id)
     }
 }
 

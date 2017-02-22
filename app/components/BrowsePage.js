@@ -5,8 +5,8 @@ import classnames from 'classnames'
 import Item from '../components/Item'
 import Header from '../components/Header'
 
-import browseStyles from '../styles/browse.css'
-import baseStyles from '../styles/base.css'
+import browseStyles from './browse.css'
+import baseStyles from './base.css'
 
 const PRODUCT_THRESHOLD = 5
 
@@ -19,8 +19,8 @@ const getStateFromStores = () => {
 
 class BrowsePage extends React.Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = getStateFromStores()
         this.change = this.change.bind(this)
         this.handleLoadMore = this.handleLoadMore.bind(this)
@@ -64,16 +64,6 @@ class BrowsePage extends React.Component {
         }
     }
 
-    renderItems() {
-        const items = this.state.items
-
-        if (items && this.getItemCount()) {
-            return items.map(this.renderSingleItem, this)
-        }
-
-        return []
-    }
-
     render() {
         const buttonClass = this.state.threshold === this.getItemCount() 
             ? browseStyles.disabled
@@ -83,7 +73,7 @@ class BrowsePage extends React.Component {
             <div>
                 <Header title="Browse page" />
                 <div className={browseStyles.wrapper}>
-                    {this.renderItems()}
+                    {this.state.items.map(this.renderSingleItem, this)}
                 </div>
                 <div className={browseStyles.button_container}>
                     <button className={buttonClass} onClick={this.handleLoadMore}>Load More</button>

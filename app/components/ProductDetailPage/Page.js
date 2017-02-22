@@ -7,8 +7,8 @@ import Header from '../Header'
 import FavIcon from '../FavIcon'
 import ProductDetails from './ProductDetails'
 
-import pdpStyles from '../../styles/pdp.css'
-import baseStyles from '../../styles/base.css'
+import style from './style.css'
+import baseStyle from '../base.css'
 
 function getProductId() {
     return window.location.pathname.split('/').pop()
@@ -48,11 +48,6 @@ class ProductPage extends React.Component {
 
     render() {
         const item = this.state.item
-        
-        if (! Object.keys(item).length) {
-            return null
-        }
-
         const headerTitle = item.seller && item.seller.company
 
         return (
@@ -61,14 +56,14 @@ class ProductPage extends React.Component {
                     title={headerTitle}
                     type="pdp"
                     onClick={this.handleBackButton}
-                    className={pdpStyles.back_button}
-                    arrowButtonClass={pdpStyles.arrow_btn} 
+                    className={style.back_button}
+                    arrowButtonClass={style.arrow_btn} 
                 />
 
-                <div className={pdpStyles.wrapper}>
-                    <div className={pdpStyles.image_container}>
+                <div className={style.wrapper}>
+                    <div className={style.image_container}>
                         <img src={item.image} />
-                        <FavIcon id={item.id} className={pdpStyles.fav_icon} />
+                        <FavIcon id={item.id} className={style.fav_icon} />
                     </div>
                     <ProductDetails item={item} />
                 </div>
