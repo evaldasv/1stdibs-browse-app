@@ -1,8 +1,13 @@
-:local(.wrapper) {
-    width: 90%;
-    margin: 10px auto;
+:local(.container) {
     display: flex;
-    max-width: 800px;
+    justify-content: center;
+}
+
+:local(.details) {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin-top: 15px;
 }
 
 :local(.image_container),
@@ -19,7 +24,6 @@
 
 :local(.image_container) {
     width: 35%;
-    float: left;
     background: #fff;
     display: flex;
     align-items: center;
@@ -32,8 +36,7 @@
     max-width: 95%;
 }
 
-:local(.product_info) {
-    display: inline-block;
+:local(.details_container) {
     width: 65%;
     padding-left: 10px;
 }
@@ -109,15 +112,12 @@ header {
 }
 
 :local(header .back_button) {
+    font-size: 16px;
+    height: 20px;
     text-transform: capitalize;
-    display: inline-block;
-    float: left;
     color: #D2BC92;
     cursor: pointer;
-}
-
-:local(.back_button) {
-    font-size: 16px;
+    position: absolute;
     margin-top: 5px;
 }
 

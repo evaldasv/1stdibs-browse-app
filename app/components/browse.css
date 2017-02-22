@@ -1,20 +1,16 @@
-:local(.wrapper) {
-    margin: 0 auto;
-    padding: 10px;
-    max-width: 90%;
-    content: "";
-    display: table;
-    clear: both;
+:local(.container) {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 :local(.item) {
     background: #fff;
-    background-clip: content-box;
-    margin: 10px;
-    float: left;
     width: 33.33%;
+    margin: 10px;
     overflow: hidden;
     max-width: 320px;
+    min-width: 160px;
     border: 1px solid #ccc;
 }
 
@@ -25,9 +21,13 @@
     cursor: pointer;
 }
 
+:local(.button_container) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 :local(.button_container) button {
-    display: block;
-    margin: 0 auto;
     background-color: #fff;
     -moz-border-radius: 28px;
     -webkit-border-radius: 28px;
@@ -37,6 +37,7 @@
     color: #D2BC92;
     font-size: 14px;
     padding: 15px 45px;
+    margin-top: 15px;
     text-transform: uppercase;
     outline: none;
 }
@@ -50,6 +51,5 @@
 }
 
 :local(.item_price_label) {
-    color: #000;
     padding: 15px;
 }

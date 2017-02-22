@@ -8,7 +8,6 @@ header {
     border-bottom: 1px solid #ccc;
     font-size: 24px;
     font-weight: bold;
-    color: #000;
 }
 
 body {
@@ -16,7 +15,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
-    color: #666;
+    color: #000;
 }
 
 *, *:after, *:before {
