@@ -34,12 +34,12 @@ AppDispatcher.register((payload) => {
 
     switch(action.type) {
         case AppConstants.ITEMS_RESPONSE:
-            _items = data && data.items || []
+            _items = data
             AppStore.emitChange()
             break
 
         case AppConstants.SINGLE_ITEM_RESPONSE:
-            _item = data || {}
+            _item = data
             AppStore.emitChange()
             break
 

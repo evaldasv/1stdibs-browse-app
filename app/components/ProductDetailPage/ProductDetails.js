@@ -19,30 +19,19 @@ class CTAButtons extends React.Component {
 
 class ProductMeasurements extends React.Component {
     render() {
-        const item = this.props.item;
-        const measurements = item.measurements && item.measurements.display;
         return (
             <p className={style.product_measurements}>
                 <span className={style.bold_label}>Measurements:</span>
                 <br />
-                {measurements}
+                {this.props.item.measurements}
             </p>
         )
     }
 }
 
 class ProductDetails extends React.Component {
-
-    getItemPrice() {
-        const item = this.props.item
-        return item &&
-            item.price &&
-            item.price.amounts.USD ||
-            'Price Upon Request'
-    }
-
     render() {
-        const item = this.props.item;
+        const item = this.props.item
         return (
             <div className={style.details_container}>
                 <div className={style.details_block_top}>
@@ -51,7 +40,7 @@ class ProductDetails extends React.Component {
                             {item.title}
                         </div>
                         <div className={style.price}>
-                            {this.getItemPrice()}
+                            {item.price}
                         </div>
                         <ProductMeasurements item={item} />
                     </div>
@@ -61,7 +50,7 @@ class ProductDetails extends React.Component {
                     <p>{item.description}</p>
                     <div className={style.creator_container}>
                         <div className={style.bold_label}>Creator: &nbsp;</div>
-                        <div>{item.creators || 'N/A'}</div>
+                        <div>{item.creators}</div>
                     </div>
                 </div>
             </div>

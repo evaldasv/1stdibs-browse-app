@@ -51,7 +51,7 @@ class ProductPage extends React.Component {
 
         return (
             <div>
-                <Header title={item.seller.company}>
+                <Header title={item.seller}>
                     <div className={style.back_button} onClick={this.handleBackButton}>
                         <div className={style.arrow_btn}>&lt;</div>
                         <span>Home</span>

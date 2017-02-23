@@ -6,18 +6,13 @@ class Item extends React.Component {
 
     render() {
         const item = this.props.item
-        const price = item &&
-            item.price &&
-            item.price.amounts.USD ||
-            'Price Upon Request'
-
         return (
             <div className={BrowseStyles.item}>
                 <a href={'/pdp/' + item.id}>
                     <img src={item.image} />
                 </a>
                 <div className={BrowseStyles.item_price_label}>
-                    {price}
+                    {item.price}
                     <FavIcon id={item.id}/>
                 </div>
             </div>

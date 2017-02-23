@@ -57,7 +57,7 @@ class BrowsePage extends React.Component {
         if (index < this.state.threshold) {
             return (
                 <Item
-                    key={item.integerId}
+                    key={item.id}
                     item={item}
                 />
             )
