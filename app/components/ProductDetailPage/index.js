@@ -10,10 +10,6 @@ import ProductDetails from './ProductDetails'
 import style from './style.css'
 import baseStyle from '../base.css'
 
-function getProductId() {
-    return window.location.pathname.split('/').pop()
-}
-
 const getStateFromStores = () => {
     return {
         item: AppStore.getSingleItem()
@@ -29,7 +25,7 @@ class ProductPage extends React.Component {
     }
 
     componentDidMount() {
-        AppActions.getSingleItem(getProductId())
+        AppActions.getSingleItem(this.props.params.pdpID)
         AppStore.addChangeListener(this.change)
     }
 
@@ -43,7 +39,7 @@ class ProductPage extends React.Component {
 
     handleBackButton(e) {
         e.preventDefault()
-        window.history.go(-1)
+        window.location.replace('/')
     }
 
     render() {
@@ -53,11 +49,9 @@ class ProductPage extends React.Component {
             return null
         }
 
-        const headerTitle = item.seller && item.seller.company
-
         return (
             <div>
-                <Header title={headerTitle}>
+                <Header title={item.seller.company}>
                     <div className={style.back_button} onClick={this.handleBackButton}>
                         <div className={style.arrow_btn}>&lt;</div>
                         <span>Home</span>

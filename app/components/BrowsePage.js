@@ -62,6 +62,7 @@ class BrowsePage extends React.Component {
                 />
             )
         }
+        return null
     }
 
     render() {

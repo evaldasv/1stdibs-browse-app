@@ -23,7 +23,9 @@ class FavIcon extends React.Component {
     }
 
     render() {
-        const activeKlass = this.state.active ? style.fav_icon_active : null
+        const activeKlass = this.state.active
+            ? style.fav_icon_active
+            : null
         const classes = classnames( ['fa fa-heart-o fa-lg',
                                 style.fav_icon,
                                 activeKlass,
